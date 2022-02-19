@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <%= t.include("partials/_head.html", grunt.data.json) %>
+    <% if (!json.project.embedded) { %>
+      <%= t.include("partials/_dataLayer.html") %>
+      <script src="https://seattle-times.zeustechnology.com/main.js" async></script>
+      <script src="https://www.seattletimes.com/wp-content/plugins/st-advertising/dist/st-projects-bundle.js" async></script>
+    <% } %>
+    <% if (json.project.production && !json.project.embedded) { %>
+      <%= t.include("partials/_gtm.html") %>
+    <% } %>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Oswald|Open+Sans:600,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <% if (json.project.production && !json.project.embedded) { %>
+      <%= t.include("partials/_gtmNoScript.html") %>
+    <% } %>
+    <responsive-child>
+      <!-- content goes here -->
+
+    <div class="fixed-frame">
+      <% json.lineup_2021.sort(function(a, b) { return a.order - b.order }).forEach(function(player, i) { %>
+        <!-- <img src="assets/pictures/<%= player.image %>" class="fixable" data-index="<%= i %>"> -->
+        <div data-picture="<%= player.image %>" class="fixable" data-index="<%= i %>"></div>
+      <% }) %>
+    </div>
+
+    <main class="scroll">
+
+      <header class="intro">
+        <nav class="logo-bar">
+          <a class="logo" href="http://seattletimes.com">
+            <img src="./assets/st-logo.png">
+          </a>
+        </nav>
+
+        <div class="contents">
+
+          <h1>Meet the 2021 Sounders' starting lineup</h1>
+
+          <p>
+            Some text here
+          </p>
+
+          <p class="byline">
+            <span class="byline-name">By Sean Quinton</span><br>
+            <span class="byline-name">Published Feb. XX, 2022</span>
+
+          </p>
+
+          <p class="instructions">
+            <i class="fa fa-chevron-down"></i>
+            Scroll to continue
+            <i class="fa fa-chevron-down"></i>
+
+        </div>
+
+      </header>
+
+    <% json.lineup_2021.sort(function(a, b) { return a.order - b.order }).forEach(function(player, i) { %>
+      <section class="parallax-play" data-index="<%= i %>">
+
+        <div class="description pointer <%= player.overlay %>">
+
+          <div class="front ">
+            <h3 class="rank">
+              <div class="number"><%= player.number %></div> <%= player.name %>, <span class="position"><%= player.position %></span><i class="fa fa-times-circle close show"></i>
+            </h3>
+
+            <div class="stats">
+              <ul>
+                <li><strong>Age:</strong> <%= player.age %>
+                <li><strong>Height:</strong> <%= player.height %>
+                <li><strong>Weight:</strong> <%= player.weight %>
+                <li><strong>Hometown:</strong> <%= player.hometown %>
+            </div>
+
+            <div class="copy">
+              <p><%= player.text %></p>
+            </div>
+            <div class="credit">
+              Photo by <%= player.credit %> / <%= player.publication %>
+            </div>
+          </div>
+        </div>
+      </section>
+    <% }) %>
+
+    <%= t.include("partials/_navBottom.html") %>
+    </main>
+    </responsive-child>
+
+    <script src="app.js" async></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_analytics.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>

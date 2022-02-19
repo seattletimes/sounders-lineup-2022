@@ -1,0 +1,61 @@
+@import "seattletimes";
+
+@accentBlue: #0f4c8b;
+@seaGray: #AAA;
+@st-blue: #1dd83c;
+@gray: #333;
+
+@import "page";
+@import "scroll";
+@import "section";
+
+@mobile: ~"(max-width: 720px)";
+@landscape: ~"(orientation: landscape)";
+@portrait: ~"(orientation: portrait)";
+
+@hed: Oswald, Helvetica, Arial, sans-serif;
+@body: 'Open Sans', sans-serif;
+@sans-serif: Helvetica, Arial, sans-serif;
+@serif: Georgia, Times, serif;
+
+
+
+h1 { color: white; }
+
+
+
+.transform(...) {
+  -webkit-transform: @arguments;
+  -moz-transform: @arguments;
+  -ms-transform: @arguments;
+  transform: @arguments;
+}
+
+body {
+  background: #222;
+  margin: 0 auto;
+  padding: 0;
+  font-family: @sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: @seaGray;
+  text-decoration: none;
+  border: none;
+
+  img {
+    border: none;
+  }
+
+  &:hover {
+    color: @accentBlue;
+  }
+}
+
+
+
+
+sup {
+  vertical-align: text-top;
+}
