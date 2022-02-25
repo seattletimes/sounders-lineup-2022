@@ -5,7 +5,8 @@ require("component-responsive-frame/child");
 
 var qsa = function(s) { return Array.prototype.slice.call(document.querySelectorAll(s)) };
 
-var images = qsa("div.fixable");
+// var images = qsa("div.fixable");
+var images = qsa("img.fixable");
 var dest = document.querySelector(".fixed-frame");
 var sections = qsa(".parallax-play");
 
@@ -23,7 +24,7 @@ images.forEach(function(img, i) {
   var picture_id = img.getAttribute("data-picture");
   indexed[index * 1] = img;
 
-  img.style.backgroundImage = `url('assets/pictures/${pictureSize}/${picture_id}')`;
+  // img.style.backgroundImage = `url('assets/pictures/${pictureSize}/${picture_id}')`;
 
   // if (!i) img.style.opacity = 0;
   // dest.appendChild(img);
@@ -63,7 +64,7 @@ window.addEventListener("scroll", debounce(function(e) {
       indexed[i].style.opacity = 1;
       lastVisible = i + 1;
     } else {
-      console.log(indexed[i]);
+      // console.log(indexed[i]);
       // indexed[i].removeAttribute("visible");
       indexed[i].style.opacity = 0;
     }

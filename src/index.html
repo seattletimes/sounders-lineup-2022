@@ -11,7 +11,7 @@
       <%= t.include("partials/_gtm.html") %>
     <% } %>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Oswald|Open+Sans:600,400' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Oswald|Open+Sans:600,400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
@@ -23,8 +23,13 @@
 
     <div class="fixed-frame">
       <% json.lineup_2021.sort(function(a, b) { return a.order - b.order }).forEach(function(player, i) { %>
-        <!-- <img src="assets/pictures/<%= player.image %>" class="fixable" data-index="<%= i %>"> -->
-        <div data-picture="<%= player.image %>" class="fixable" data-index="<%= i %>"></div>
+        <!-- <img src="assets/pictures/<%= player.image %>" loading="lazy" class="fixable" data-index="<%= i %>"> -->
+        <img
+        srcset="assets/pictures/desktop/<%= player.image %>  1000w,
+              assets/pictures/mobile/<%= player.image %> 450w"
+        sizes="(max-width: 500px) 33vw, 100vw"
+        src="assets/pictures/mobile/<%= player.image %>" loading="lazy" class="fixable" data-index="<%= i %>">
+        <!-- <div data-picture="<%= player.image %>" class="fixable" data-index="<%= i %>"></div> -->
       <% }) %>
     </div>
 
@@ -37,17 +42,20 @@
           </a>
         </nav>
 
+        <zeus-ad id="zeus_top" width="100%;"></zeus-ad>
+
         <div class="contents">
 
-          <h1>Meet the 2021 Sounders' starting lineup</h1>
+
+          <h1>Meet the Sounders' Starting XI</h1>
 
           <p>
-            Some text here
+            The Sounders have reached the playoffs for an MLS-record 13 straight seasons, finishing two of the last six with championships. So Seattle is no stranger to lofty expectations. But this season, with returning stars in place, the emergence of young contributors and the addition of even more talent via free agency, expectations might be higher than ever before. Here's a look at the team's projected starting XI and what to expect from each player in 2022.
           </p>
 
           <p class="byline">
-            <span class="byline-name">By Sean Quinton</span><br>
-            <span class="byline-name">Published Feb. XX, 2022</span>
+            <span class="byline-name">By <a href="https://www.seattletimes.com/author/jayda-evans/" target="_blank" rel="nofollow noreferrer noopener">Jayda Evans</a></span><br>
+            <span class="byline-name">Published Feb. 25, 2022</span>
 
           </p>
 
@@ -74,12 +82,17 @@
               <ul>
                 <li><strong>Age:</strong> <%= player.age %>
                 <li><strong>Height:</strong> <%= player.height %>
-                <li><strong>Weight:</strong> <%= player.weight %>
-                <li><strong>Hometown:</strong> <%= player.hometown %>
+                <li><strong>Weight:</strong> <%= player.weight %> lbs
+                <li><strong>Birthplace:</strong> <%= player.birthplace %>
             </div>
 
             <div class="copy">
-              <p><%= player.text %></p>
+              <p class="head">What the Sounders need:</p>
+              <p><%= player.need %></p>
+            </div>
+            <div class="copy">
+              <p class="head">Did you know?:</p>
+              <p><%= player.know %></p>
             </div>
             <div class="credit">
               Photo by <%= player.credit %> / <%= player.publication %>

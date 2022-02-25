@@ -2,21 +2,21 @@
   "s3": {
     "stage": {
       "bucket": "projects-staging.seattletimes.com",
-      "path": ""
+      "path": "inflexible-splash"
     },
     "live": {
       "bucket": "projects.seattletimes.com",
-      "path": ""
+      "path": "2022/sports/meet-the-seattle-sounders-lineup"
     }
   },
-  "title": "",
-  "description": "",
-  "author": "",
-  "url": "",
-  "post_id": 0,
+  "title": "Meet the Sounders' Starting XI",
+  "description": "Here's a look at the team's projected starting lineup and what to expect from each player in 2022.",
+  "author": "Jayda Evans",
+  "url": "https://projects.seattletimes.com/2022/sports/meet-the-seattle-sounders-lineup/",
+  "post_id": 14693744,
   "image": "assets/social.jpg",
   "sheets": ["1ogyiFp0b9QHSC77aqvEJvPev5uVOWlJN_zHxxglXD1s"],
   "docs": [],
-  "embedded": true,
-  "production": false
+  "embedded": false,
+  "production": true
 }
